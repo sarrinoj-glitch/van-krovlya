@@ -1880,6 +1880,8 @@
   <a href="#v3-hero" class="nav-logo">Ван<span>.</span></a>
   <div class="nav-links">
     <a href="#services">Услуги</a>
+    <a href="#naplav">Наплавляемая</a>
+    <a href="#membrane">Мембранная</a>
     <a href="#why">Отзывы</a>
     <a href="#process">Как работаем</a>
     <a href="#faq">Вопросы</a>
@@ -2701,6 +2703,48 @@ html, body { overflow-x: clip; }
   .v3-cards .card-desc { display: none; }
   .v3-cards .card-stat { flex-direction: row; align-items: baseline; align-self: stretch; gap: 10px; padding-top: 10px; white-space: normal; }
 }
+/* два вида кровли — два отдельных раздела: тёмный под битумную наплавляемую, светлый под полимерную мембрану */
+.van-type { padding-top: 110px; padding-bottom: 110px; }
+.van-type--naplav { background: #15181D; color: #fff; }
+.van-type--membrane { background: #EDF0F3; }
+.van-type-head { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 48px 64px; align-items: end; margin-bottom: 56px; }
+.van-type .section-title { margin-bottom: 18px; }
+.van-type .section-lede { max-width: 620px; }
+.van-type--naplav .section-eyebrow { color: #8FB4EE; }
+.van-type--naplav .section-eyebrow::before { background: #8FB4EE; }
+.van-type--naplav .section-title { color: #fff; }
+.van-type--naplav .section-lede { color: rgba(255,255,255,0.72); }
+.van-type-facts { display: grid; gap: 0; border-top: 1px solid var(--border-strong); }
+.van-type-facts div { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--border-strong); }
+.van-type-facts dt { font-size: 0.86rem; color: var(--text-secondary); }
+.van-type-facts dd { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1rem; line-height: 1.35; }
+.van-type--naplav .van-type-facts, .van-type--naplav .van-type-facts div { border-color: rgba(255,255,255,0.16); }
+.van-type--naplav .van-type-facts dt { color: rgba(255,255,255,0.6); }
+.van-steps-title { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1.15rem; letter-spacing: -0.01em; margin-bottom: 22px; }
+.van-steps { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.van-step figure { aspect-ratio: 1; border-radius: 12px; overflow: hidden; background: rgba(127,127,127,0.18); }
+.van-step picture { display: block; width: 100%; height: 100%; }
+.van-step img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.van-step-n { display: block; margin-top: 18px; font-family: 'Space Grotesk', sans-serif; font-size: 0.8rem; font-weight: 600; color: var(--accent); }
+.van-type--naplav .van-step-n { color: #8FB4EE; }
+.van-step h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1.12rem; line-height: 1.25; letter-spacing: -0.01em; margin: 4px 0 8px; }
+.van-step p { font-size: 0.94rem; line-height: 1.55; color: var(--text-secondary); }
+.van-type--naplav .van-step p { color: rgba(255,255,255,0.68); }
+.van-type-foot { margin-top: 48px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; }
+.van-type-foot p { font-size: 0.94rem; color: var(--text-secondary); max-width: 520px; }
+.van-type--naplav .van-type-foot p { color: rgba(255,255,255,0.68); }
+@media (max-width: 1024px) {
+  .van-type-head { grid-template-columns: 1fr; align-items: start; margin-bottom: 44px; }
+  .van-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 20px; }
+}
+@media (max-width: 720px) {
+  .van-type { padding-top: 72px; padding-bottom: 72px; }
+  .van-type-facts div { grid-template-columns: 7.5rem minmax(0, 1fr); }
+  /* этапы листаются вбок: порядок слоёв читается как лента */
+  .van-steps { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 -20px; padding: 0 20px 6px; scroll-padding-left: 20px; scrollbar-width: none; }
+  .van-steps::-webkit-scrollbar { display: none; }
+  .van-step { flex: 0 0 76%; scroll-snap-align: start; }
+}
 </style>
 
 <!-- Первый экран: оффер слева + покадровая анимация крыши справа -->
@@ -2725,8 +2769,9 @@ html, body { overflow-x: clip; }
       </span>
     </a>
     <nav class="hp-nav" aria-label="Основная навигация">
-      <a href="#v3-hero">Главная</a>
       <a href="#services">Услуги</a>
+      <a href="#naplav">Наплавляемая</a>
+      <a href="#membrane">Мембранная</a>
       <a href="#why">Отзывы</a>
       <a href="#faq">Вопросы</a>
       <a href="#cta">Контакты</a>
@@ -2840,7 +2885,7 @@ html, body { overflow-x: clip; }
       <div>
         <span class="section-eyebrow">Услуги и&nbsp;цены</span>
         <h2 class="section-title">Кровля и&nbsp;<em>спецтехника</em></h2>
-        <p class="section-lede">Два вида плоской кровли и&nbsp;техника. Цены ориентировочные: точную стоимость называем после осмотра объекта.</p>
+        <p class="section-lede">Наплавляемая и&nbsp;мембранная кровля&nbsp;— это разные материалы и&nbsp;разная технология, поэтому ниже у&nbsp;каждой свой раздел с&nbsp;этапами работ. Цены ориентировочные: точную стоимость называем после осмотра объекта.</p>
       </div>
       <div class="section-head-right">
         <div class="section-visual van-photo">
@@ -2874,7 +2919,7 @@ html, body { overflow-x: clip; }
         <p class="service-desc">Материал раскатывают по&nbsp;основанию и&nbsp;наплавляют газовой горелкой. Так закрывают плоские крыши домов, гаражей и&nbsp;производственных зданий.</p>
         <div class="service-meta">
           <span class="service-tag">150–650&nbsp;₽ за&nbsp;м²</span>
-          <a href="#cta" class="service-cta">Рассчитать →</a>
+          <a href="#naplav" class="service-cta">Этапы работ →</a>
         </div>
       </article>
 
@@ -2884,7 +2929,7 @@ html, body { overflow-x: clip; }
         <p class="service-desc">Мембрану раскатывают по&nbsp;утеплителю, а&nbsp;швы сваривают горячим воздухом. Покрытие светлое и&nbsp;лёгкое, им&nbsp;закрывают большие площади.</p>
         <div class="service-meta">
           <span class="service-tag">250–800&nbsp;₽ за&nbsp;м²</span>
-          <a href="#cta" class="service-cta">Рассчитать →</a>
+          <a href="#membrane" class="service-cta">Этапы работ →</a>
         </div>
       </article>
 
@@ -2911,6 +2956,144 @@ html, body { overflow-x: clip; }
   </div>
 </section>
 
+<!-- Наплавляемая кровля -->
+<section id="naplav" class="section van-type van-type--naplav">
+  <div class="section-inner">
+    <div class="van-type-head">
+      <div>
+        <span class="section-eyebrow">Битумная рулонная</span>
+        <h2 class="section-title">Наплавляемая кровля</h2>
+        <p class="section-lede">Рулонный битумный материал сплавляют с&nbsp;основанием газовой горелкой. Слои перекрывают друг друга, и&nbsp;получается сплошной ковёр без щелей. Так закрывают плоские крыши домов, гаражей и&nbsp;производственных зданий.</p>
+      </div>
+      <dl class="van-type-facts">
+          <div><dt>Материал</dt><dd>Битумные рулоны в&nbsp;два слоя</dd></div>
+          <div><dt>Как укладывают</dt><dd>Наплавляют газовой горелкой</dd></div>
+          <div><dt>Цена</dt><dd>150–650&nbsp;₽ за&nbsp;м²</dd></div>
+      </dl>
+    </div>
+    <h3 class="van-steps-title">Как её делают: этап за&nbsp;этапом</h3>
+    <ol class="van-steps">
+        <li class="van-step">
+          <figure>
+            <picture>
+              <source srcset="assets/van/step-naplav-1.webp" type="image/webp">
+              <img src="assets/van/step-naplav-1.jpg" alt="Кровельщики раскатывают первый рулон наплавляемой кровли по подготовленному основанию" loading="lazy" decoding="async" width="720" height="720">
+            </picture>
+          </figure>
+          <span class="van-step-n">Этап 1</span>
+          <h4>Основание и&nbsp;первый рулон</h4>
+          <p>Очищаем и&nbsp;грунтуем основание, затем раскатываем по&nbsp;нему первый рулон.</p>
+        </li>
+        <li class="van-step">
+          <figure>
+            <picture>
+              <source srcset="assets/van/step-naplav-2.webp" type="image/webp">
+              <img src="assets/van/step-naplav-2.jpg" alt="Нижний слой наплавляемой кровли: полотна уложены внахлёст по всей крыше" loading="lazy" decoding="async" width="720" height="720">
+            </picture>
+          </figure>
+          <span class="van-step-n">Этап 2</span>
+          <h4>Нижний слой</h4>
+          <p>Наплавляем подкладочный материал. Полотна кладём внахлёст, чтобы между ними не&nbsp;осталось щелей.</p>
+        </li>
+        <li class="van-step">
+          <figure>
+            <picture>
+              <source srcset="assets/van/step-naplav-3.webp" type="image/webp">
+              <img src="assets/van/step-naplav-3.jpg" alt="Верхний слой с посыпкой и примыкание к вентиляционной трубе" loading="lazy" decoding="async" width="720" height="720">
+            </picture>
+          </figure>
+          <span class="van-step-n">Этап 3</span>
+          <h4>Верхний слой и&nbsp;примыкания</h4>
+          <p>Сверху идёт материал с&nbsp;каменной посыпкой: она защищает битум от&nbsp;солнца. Трубы и&nbsp;парапеты обходим отдельно.</p>
+        </li>
+        <li class="van-step">
+          <figure>
+            <picture>
+              <source srcset="assets/van/step-naplav-4.webp" type="image/webp">
+              <img src="assets/van/step-naplav-4.jpg" alt="Готовая наплавляемая кровля после дождя" loading="lazy" decoding="async" width="720" height="720">
+            </picture>
+          </figure>
+          <span class="van-step-n">Этап 4</span>
+          <h4>Готовая кровля</h4>
+          <p>Сплошной ковёр по&nbsp;всей крыше. Фото сделано после дождя.</p>
+        </li>
+    </ol>
+    <div class="van-type-foot">
+      <a href="#cta" class="btn btn-primary">Рассчитать наплавляемую кровлю</a>
+      <p>Назовите площадь крыши&nbsp;— прикинем бюджет до&nbsp;осмотра.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Мембранная кровля -->
+<section id="membrane" class="section van-type van-type--membrane">
+  <div class="section-inner">
+    <div class="van-type-head">
+      <div>
+        <span class="section-eyebrow">Полимерная</span>
+        <h2 class="section-title">Мембранная кровля</h2>
+        <p class="section-lede">Полимерное полотно раскатывают по&nbsp;утеплителю и&nbsp;крепят к&nbsp;основанию, а&nbsp;швы сваривают горячим воздухом, без открытого огня. Покрытие светлое и&nbsp;лёгкое, им&nbsp;закрывают большие площади.</p>
+      </div>
+      <dl class="van-type-facts">
+          <div><dt>Материал</dt><dd>Полимерная мембрана по&nbsp;утеплителю</dd></div>
+          <div><dt>Как укладывают</dt><dd>Швы сваривают горячим воздухом</dd></div>
+          <div><dt>Цена</dt><dd>250–800&nbsp;₽ за&nbsp;м²</dd></div>
+      </dl>
+    </div>
+    <h3 class="van-steps-title">Как её делают: этап за&nbsp;этапом</h3>
+    <ol class="van-steps">
+        <li class="van-step">
+          <figure>
+            <picture>
+              <source srcset="assets/van/step-membrane-1.webp" type="image/webp">
+              <img src="assets/van/step-membrane-1.jpg" alt="Пачки утеплителя разложены по основанию из профлиста" loading="lazy" decoding="async" width="720" height="720">
+            </picture>
+          </figure>
+          <span class="van-step-n">Этап 1</span>
+          <h4>Основание и&nbsp;материалы</h4>
+          <p>Поднимаем на&nbsp;крышу утеплитель и&nbsp;мембрану. На&nbsp;фото основание из&nbsp;профлиста и&nbsp;пачки каменной ваты.</p>
+        </li>
+        <li class="van-step">
+          <figure>
+            <picture>
+              <source srcset="assets/van/step-membrane-2.webp" type="image/webp">
+              <img src="assets/van/step-membrane-2.jpg" alt="Плиты утеплителя уложены по профлисту и закреплены" loading="lazy" decoding="async" width="720" height="720">
+            </picture>
+          </figure>
+          <span class="van-step-n">Этап 2</span>
+          <h4>Утеплитель</h4>
+          <p>Стелем пароизоляцию и&nbsp;раскладываем по&nbsp;ней плиты утеплителя. Плиты крепим к&nbsp;основанию.</p>
+        </li>
+        <li class="van-step">
+          <figure>
+            <picture>
+              <source srcset="assets/van/step-membrane-3.webp" type="image/webp">
+              <img src="assets/van/step-membrane-3.jpg" alt="Проход вентиляционной шахты через кровлю" loading="lazy" decoding="async" width="720" height="720">
+            </picture>
+          </figure>
+          <span class="van-step-n">Этап 3</span>
+          <h4>Мембрана и&nbsp;примыкания</h4>
+          <p>Раскатываем мембрану и&nbsp;свариваем швы. Места, где через кровлю проходят вентиляция и&nbsp;трубы, заделываем отдельно.</p>
+        </li>
+        <li class="van-step">
+          <figure>
+            <picture>
+              <source srcset="assets/van/step-membrane-4.webp" type="image/webp">
+              <img src="assets/van/step-membrane-4.jpg" alt="Готовая мембранная кровля на большой площади" loading="lazy" decoding="async" width="720" height="720">
+            </picture>
+          </figure>
+          <span class="van-step-n">Этап 4</span>
+          <h4>Готовая кровля</h4>
+          <p>Мембрана уложена по&nbsp;всей площади, швы сварены.</p>
+        </li>
+    </ol>
+    <div class="van-type-foot">
+      <a href="#cta" class="btn btn-primary">Рассчитать мембранную кровлю</a>
+      <p>Назовите площадь крыши&nbsp;— прикинем бюджет до&nbsp;осмотра.</p>
+    </div>
+  </div>
+</section>
+
 <!-- Отзывы -->
 <section id="why" class="section">
   <div class="section-inner">
@@ -2918,7 +3101,7 @@ html, body { overflow-x: clip; }
       <div>
         <span class="section-eyebrow">Отзывы</span>
         <h2 class="section-title">Что пишут <em>заказчики</em></h2>
-        <p class="section-lede">У&nbsp;компании 5,0 в&nbsp;2ГИС по&nbsp;девяти оценкам и&nbsp;семь отзывов, ещё один отзыв есть в&nbsp;Яндекс Картах. Чаще всего в&nbsp;них пишут о&nbsp;трёх вещах. Фото ниже&nbsp;— с&nbsp;объектов компании.</p>
+        <p class="section-lede">У&nbsp;компании 5,0 в&nbsp;2ГИС по&nbsp;девяти оценкам и&nbsp;семь отзывов, ещё один отзыв есть в&nbsp;Яндекс Картах. Чаще всего в&nbsp;них пишут о&nbsp;трёх вещах.</p>
       </div>
     </div>
 
@@ -2927,34 +3110,16 @@ html, body { overflow-x: clip; }
         <div class="why-num">Сроки</div>
         <h3 class="why-title">Сдают вовремя</h3>
         <p class="why-desc">О&nbsp;сроках говорится в&nbsp;большинстве отзывов: работу закончили тогда, когда договорились.</p>
-        <div class="why-photo">
-          <picture>
-            <source srcset="assets/van/svc-naplav.webp" type="image/webp">
-            <img src="assets/van/svc-naplav.jpg" alt="Кровельщик раскатывает рулон наплавляемой кровли" loading="lazy" decoding="async" width="720" height="480">
-          </picture>
-        </div>
       </div>
       <div class="why-item">
         <div class="why-num">Качество</div>
         <h3 class="why-title">Делают аккуратно</h3>
         <p class="why-desc">Заказчики отмечают качество работы. В&nbsp;одном из&nbsp;отзывов рассказывают, что мастера объяснили разницу между материалами и&nbsp;дали советы по&nbsp;уходу за&nbsp;кровлей.</p>
-        <div class="why-photo">
-          <picture>
-            <source srcset="assets/van/gal-3.webp" type="image/webp">
-            <img src="assets/van/gal-3.jpg" alt="Вентиляционный выход на наплавляемой кровле с готовым примыканием" loading="lazy" decoding="async" width="720" height="720">
-          </picture>
-        </div>
       </div>
       <div class="why-item">
         <div class="why-num">Цена</div>
         <h3 class="why-title">Берут разумно</h3>
         <p class="why-desc">В&nbsp;двух отзывах отдельно отмечают цену: недорого и&nbsp;приемлемо.</p>
-        <div class="why-photo">
-          <picture>
-            <source srcset="assets/van/svc-membrane.webp" type="image/webp">
-            <img src="assets/van/svc-membrane.jpg" alt="Готовая мембранная кровля на большой площади" loading="lazy" decoding="async" width="1080" height="720">
-          </picture>
-        </div>
       </div>
     </div>
 
